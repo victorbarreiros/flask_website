@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Expenses App</title>
+            {% block styles %}
+                <!-- Bootstrap CSS -->
+                {{ bootstrap.load_css() }}
+                <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+            {% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="wrapper">
+            {% include 'sidebar.html' %}
+            <div id="content">
+                {% include 'navbar.html' %}
+                <main class="container-fluid">
+                    {% block content %}{% endblock %}
+                </main>
+            </div>
+        </div>
+        {% block scripts %}
+            <!-- Optional JavaScript -->
+            {{ bootstrap.load_js() }}
+            <script>
+                $(document).ready(function () {
+                    $('#sidebarCollapse').on('click', function () {
+                        $('#sidebar').toggleClass('active');
+                    });
+                });
+            </script>
+        {% endblock %}
+    </body>
+</html>
